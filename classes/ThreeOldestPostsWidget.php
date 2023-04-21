@@ -11,6 +11,23 @@ class ThreeOldestPostsWidget
 
         // Save the checkbox value when the dashboard widget form is submitted
         add_action( 'admin_post_save_three_oldest_posts_enabled', array( $this, 'save_three_oldest_posts_enabled' ) );
+
+        // Add notification to inform user about plugin status
+        if ( ! get_option( 'three_oldest_posts_enabled' ) ) {
+            add_action( 'admin_notices', array( $this, 'three_oldest_posts_not_enabled_notice' ) );
+        }
+    }
+
+    /**
+     * Notification content when plugin functionality disabled
+     * @return void
+     */
+    public function three_oldest_posts_not_enabled_notice() {
+        ?>
+        <div class="notice notice-warning">
+            <p><?php _e( 'The "Three Oldest Posts" plugin is currently disabled. Please enable at the main dashboard to use it.'); ?></p>
+        </div>
+        <?php
     }
 
     /**
