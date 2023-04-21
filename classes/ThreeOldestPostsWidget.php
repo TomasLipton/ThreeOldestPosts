@@ -1,6 +1,9 @@
 <?php
 class ThreeOldestPostsWidget
 {
+    /**
+     * Register hooks for dashboard settings widget
+     */
     public function __construct()
     {
         // Add the widget to the WordPress admin dashboard
@@ -18,6 +21,10 @@ class ThreeOldestPostsWidget
         delete_option( 'three_oldest_posts_enabled' );
     }
 
+    /**
+     * Register setting widget on WP dashboard
+     * @return void
+     */
     public function three_oldest_posts_dashboard_widget()
     {
         wp_add_dashboard_widget(
@@ -27,6 +34,10 @@ class ThreeOldestPostsWidget
         );
     }
 
+    /**
+     * Render checkbox for switching plugin on|off
+     * @return void
+     */
     public function three_oldest_posts_widget_callback()
     {
         $options = get_option( 'three_oldest_posts_enabled' );
@@ -41,6 +52,11 @@ class ThreeOldestPostsWidget
         <?php
     }
 
+    /**
+     * Handle save setting state
+     *
+     * @return void
+     */
     public function save_three_oldest_posts_enabled()
     {
         if ( isset( $_POST['three_oldest_posts_enabled'] ) ) {

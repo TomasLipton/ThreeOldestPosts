@@ -2,12 +2,22 @@
 
 class ThreeOldestPosts
 {
+    /**
+     * Registration of AJAX endpoints for both authorized and anonymous users
+     *
+     * @return void
+     */
     public function __construct()
     {
         add_action( 'wp_ajax_get_three_oldest_posts', array( $this, 'my_action_callback' ) );
         add_action( 'wp_ajax_nopriv_get_three_oldest_posts', array( $this, 'my_action_callback' ) );
     }
 
+    /**
+     *  Returns json for the endpoints registered in construct with html content of 3 oldest posts.
+     *
+     * @return void
+     */
     public function my_action_callback()
     {
         $args = array(

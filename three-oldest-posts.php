@@ -22,6 +22,8 @@ function enqueue_three_oldest_posts_script() {
     if ( is_page() && get_option( 'three_oldest_posts_enabled' ) ) {
         wp_enqueue_script( 'three-oldest-posts', plugin_dir_url( __FILE__ ) . 'assets/custom-script.js', array( 'jquery' ), '1.0', true );
         wp_enqueue_style( 'three-oldest-posts', plugin_dir_url( __FILE__ ) . 'assets/three-oldest-posts.css' );
+
+        // Could be done with wp_add_inline_script(), but codex recommend this function https://codex.wordpress.org/AJAX_in_Plugins
         wp_localize_script( 'three-oldest-posts', 'ajaxurl', admin_url( 'admin-ajax.php' ) );
     }
 }
