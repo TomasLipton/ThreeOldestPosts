@@ -1,5 +1,4 @@
 <?php
-
 class ThreeOldestPostsWidget
 {
     public function __construct()
@@ -11,14 +10,16 @@ class ThreeOldestPostsWidget
         add_action( 'admin_post_save_three_oldest_posts_enabled', array( $this, 'save_three_oldest_posts_enabled' ) );
 
         // Delete the option value when the plugin is uninstalled
-        register_uninstall_hook( __FILE__, array('ThreeOldestPosts', 'uninstall' ) );
+        register_uninstall_hook( __FILE__, array( 'ThreeOldestPostsWidget', 'uninstall' ) );
     }
 
-    public static function uninstall() {
+    public static function uninstall()
+    {
         delete_option( 'three_oldest_posts_enabled' );
     }
 
-    public function three_oldest_posts_dashboard_widget() {
+    public function three_oldest_posts_dashboard_widget()
+    {
         wp_add_dashboard_widget(
             'three_oldest_posts_widget',
             'Three Oldest Posts',
@@ -26,7 +27,8 @@ class ThreeOldestPostsWidget
         );
     }
 
-    public function three_oldest_posts_widget_callback() {
+    public function three_oldest_posts_widget_callback()
+    {
         $options = get_option( 'three_oldest_posts_enabled' );
         ?>
         <form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
@@ -39,7 +41,8 @@ class ThreeOldestPostsWidget
         <?php
     }
 
-    public function save_three_oldest_posts_enabled() {
+    public function save_three_oldest_posts_enabled()
+    {
         if ( isset( $_POST['three_oldest_posts_enabled'] ) ) {
             update_option( 'three_oldest_posts_enabled', 1 );
         } else {

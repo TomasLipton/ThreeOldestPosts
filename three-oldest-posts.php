@@ -4,10 +4,10 @@
  *
  * Plugin Name: Three Oldest Posts
  * Description: Displays the content of the three oldest posts on any page with post type "page".
+ * Version: 1.0.0
  * Author: Vova Yakovenko
  * Author URI: https://www.linkedin.com/in/boba-php/
- * Version: 1.0.0
-*/
+ */
 
 // Include the PHP class file
 require_once plugin_dir_path( __FILE__ ) . 'classes/ThreeOldestPosts.php';
