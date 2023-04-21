@@ -11,14 +11,6 @@ class ThreeOldestPostsWidget
 
         // Save the checkbox value when the dashboard widget form is submitted
         add_action( 'admin_post_save_three_oldest_posts_enabled', array( $this, 'save_three_oldest_posts_enabled' ) );
-
-        // Delete the option value when the plugin is uninstalled
-        register_uninstall_hook( __FILE__, array( 'ThreeOldestPostsWidget', 'uninstall' ) );
-    }
-
-    public static function uninstall()
-    {
-        delete_option( 'three_oldest_posts_enabled' );
     }
 
     /**
