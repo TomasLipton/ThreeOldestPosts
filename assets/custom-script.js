@@ -6,18 +6,13 @@
             data: {action: 'get_three_oldest_posts'},
             dataType: 'json',
             success: function(data) {
-                const section = document.createElement("section");
-                section.classList.add("oldest_posts_container");
-                const body = document.querySelector("body");
-                body.appendChild(section);
-
-                for (let value of Object.values(data)) {
+                let section = $('<section>').addClass("oldest_posts_container");
+                $('body').append(section);
+                $.each(data, function(key, value) {
                     console.log(value);
-                    const p = document.createElement("div");
-                    p.innerHTML = value;
-                    section.appendChild(p);
-                }
-
+                    let p = $('<div>').html(value);
+                    section.append(p);
+                });
             }
         });
     });
