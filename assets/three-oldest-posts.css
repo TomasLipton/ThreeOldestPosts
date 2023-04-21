@@ -1,0 +1,17 @@
+.oldest_posts_container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 80%;
+    margin: 50px auto;
+}
+
+.oldest_posts_container div {
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 15px;
+    flex-basis: 20%;
+    min-width: 200px;
+    margin-top: 25px;
+}
